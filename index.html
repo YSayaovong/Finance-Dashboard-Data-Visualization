@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Finance Dashboard</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <header><h1>Personal Finance Dashboard</h1></header>
+
+  <main class="grid">
+    <section class="card">
+      <h2>Add Transaction</h2>
+      <form id="txForm">
+        <div class="row">
+          <label>Type</label>
+          <select id="type">
+            <option value="income">Income</option>
+            <option value="expense">Expense</option>
+          </select>
+        </div>
+        <div class="row">
+          <label>Category</label>
+          <input id="category" placeholder="e.g., Rent, Groceries" required>
+        </div>
+        <div class="row">
+          <label>Amount ($)</label>
+          <input id="amount" type="number" step="0.01" min="0" required>
+        </div>
+        <div class="row">
+          <label>Date</label>
+          <input id="date" type="date" required>
+        </div>
+        <button type="submit">Add</button>
+      </form>
+    </section>
+
+    <section class="card">
+      <h2>Summary</h2>
+      <div class="summary">
+        <div><strong>Total Income:</strong> $<span id="sumIncome">0.00</span></div>
+        <div><strong>Total Expense:</strong> $<span id="sumExpense">0.00</span></div>
+        <div><strong>Net:</strong> $<span id="sumNet">0.00</span></div>
+      </div>
+      <h3>By Category</h3>
+      <canvas id="categoryChart" height="160"></canvas>
+    </section>
+
+    <section class="card table-card">
+      <h2>Transactions</h2>
+      <table id="txTable">
+        <thead>
+          <tr><th>Date</th><th>Type</th><th>Category</th><th>Amount</th><th></th></tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+  </main>
+
+  <footer>
+    <small>Frontend-only demo. Data stored in your browser (localStorage).</small>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
